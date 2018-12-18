@@ -69,7 +69,11 @@ require "pry" #  binding.pry
  
     game_hash.values.each do |team_info|  
      team_info[:players].each do |player|
-       return player[:shoe] if player.has_value?(player_name)
+       if player_name == player[:player_name]
+         
+        return  player[:shoe]
+       end
+       # return player[:shoe] if player.has_value?(player_name)
      end
    end
  
