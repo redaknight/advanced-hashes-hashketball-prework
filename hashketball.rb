@@ -108,7 +108,7 @@ require "pry" #  binding.pry
     game_hash.values.each do |team_info|
      team_info[:players].each do |player|
        if player.has_value?(player_name)
-         player.delete(:player_name) 
+        player.delete(:player_name) 
           return player
        end
      end
@@ -176,5 +176,14 @@ require "pry" #  binding.pry
   
   def long_name_steals_a_ton?
  
- true
+   longest = {}
+   game_hash.values.each do |team_info|
+     team_info[:players].each do |player|
+       longest[player[:player_name]] = player[:steals]
+     end
+   end
+ 
+  max_steals = longest.values.max
+ longest[longest.key(max_steals)] == max_steals
+
   end
